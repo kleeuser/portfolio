@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 type Props = {
   slug: string;
-  title: string;
+  //title: string;
   thumbnail: string;
 };
 
 
-export default function ProjectCard({ slug, thumbnail, title }: Props) {
+export default function ProjectCard({ slug, thumbnail }: Props) {
   return (
     <Link href={`/work/${slug}`} className="card">
         <div className="thumb-wrapper">

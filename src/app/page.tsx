@@ -33,7 +33,6 @@ export default function HomePage() {
           <ProjectCard
             key={work.slug}
             slug={work.slug}
-            title={work.title}
             thumbnail={work.thumbnail}
           />
         ))}
