@@ -1,26 +1,197 @@
 @import "tailwindcss";
 
+@media screen and (min-width: 1024px) {
+  /* PC */
+  body { padding: 20px; }
+}
+@media screen and (max-width: 1023px) {
+  /* SP */
+  body { padding: 0px; }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #fafbfc;
+  --foreground: #0d0e32;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'zen-kaku-gothic-new','Helvetica Neue','MS PGothic','Arial',sans-serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  cursor: url('/img/cursor.png'), auto;
+}
+
+/* hoverする要素（リンク、ボタンなど）のカーソル */
+a:hover,
+button:hover,
+.filter-image-button:hover,
+.card:hover {
+  cursor: url('/img/cursor1.png'), pointer;
+}
+
+.header {
+  position: fixed;       /* ← 常に上に固定 */
+  top: 0;                /* 画面の一番上に固定 */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0.7rem 1.6rem 0.4rem;
+
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link {
+  display: block;
+  padding-right: 1rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav a,
+.nav :where(a, div, span, .image) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu .icon {
+  object-fit: contain;
+  display: block;
+}
+
+
+
+/* app/page.tsxのcss */
+main {
+  padding: 3rem 1.5rem 2.5rem;
+}
+
+/* category buttons */
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.filter-image-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.filter-image {
+  width: 100px;
+  height: auto; /* 任意で調整 */
+  display: block;
+}
+
+/* project card */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* border: 1px solid #e5e7eb; */
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.thumb-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.414; /* A判っぽい比率（tankaに合わせる） */
+  overflow: hidden;
+  /*border: 1px solid #0d0e32;*/
+}
+
+.thumb-image {
+  object-fit: cover; /* coverなら切り取りあり／containなら余白あり */
+}
+
+.thumb-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #0d0e3200;
+  z-index: 1;
+}
+
+.card:hover .thumb-overlay {
+  border: 1px solid #0d0e32;  /* ホバー時に*/
+}
+
+/* work/[slug]/page.tsx */
+/* 画像のコンテナ：縦並び + センター揃え */
+.detail-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* 画像間の余白 */
+  margin-bottom: 2rem;
+}
+
+.embed-video {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px; /* 必要に応じて変更 */
+  aspect-ratio: 9 / 16; /* 縦型動画用 */
+  margin-bottom: 2rem;
+}
+
+.embed-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* タイトルと説明の調整 */
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 600px;
+  padding: 0.2rem 0rem;
+}
+
+h1 {
+  font-size: 0.9rem;
+  padding: 1.7rem 0rem;
+  font-family: 'zen-kaku-gothic-new','Helvetica Neue',sans-serif;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+h2 {
+  font-size: 0.7rem;
+  padding-bottom: 1.3rem;
+  font-family: 'zen-kaku-gothic-new','Helvetica Neue',sans-serif;
+  font-weight: 300;
+  line-height: 1rem;
 }
