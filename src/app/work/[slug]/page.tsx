@@ -15,11 +15,11 @@ type Work = {
   linker?: string; 
 };
 
-type Params = {
+export default async function WorkDetail({
+  params,
+}: {
   params: { slug: string };
-};
-
-export default async function WorkDetail({ params }: Params) {
+}) {
   const work: Work | undefined = works.find((w) => w.slug === params.slug);
   if (!work) return notFound();
 
