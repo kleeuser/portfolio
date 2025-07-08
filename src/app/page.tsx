@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 import works from '../data/works.json';
 import ProjectCard from '../components/ProjectCard';
 
@@ -23,7 +24,7 @@ export default function HomePage() {
               onClick={() => setFilter(cat)}
               className="filter-image-button"
             >
-              <img src={src} alt={cat} className="filter-image" />
+              <Image src={src} alt={cat} width={100} height={40} className="filter-image" />
             </button>
           );
         })}

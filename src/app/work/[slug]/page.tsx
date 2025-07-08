@@ -1,6 +1,7 @@
-import works from '../../../data/works.json';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import works from '../../../data/works.json';
 import { linkify } from '@/lib/linkify';
 
 type Work = {
@@ -12,15 +13,19 @@ type Work = {
   day?: string;
   credit?: string;
   description?: string;
-  linker?: string; 
+  linker?: string;
 };
 
-export default async function WorkDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const work: Work | undefined = works.find((w) => w.slug === params.slug);
+// ✅ 動的ルーティングパラメータを受け取る型
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function WorkDetail({ params }: PageProps) {
+  const work = works.find((w) => w.slug === params.slug);
+
   if (!work) return notFound();
 
   return (
@@ -42,6 +47,7 @@ export default async function WorkDetail({
             Your browser does not support the video tag.
           </video>
         ))}
+
         {work.videolink && (
           <div className="embed-video">
             <iframe
@@ -54,6 +60,7 @@ export default async function WorkDetail({
             />
           </div>
         )}
+
         {work.images.map((src, i) => (
           <Image
             key={i}
@@ -64,9 +71,11 @@ export default async function WorkDetail({
           />
         ))}
       </div>
+
       {work.linker && (
         <h2 dangerouslySetInnerHTML={{ __html: linkify(work.linker) }} />
       )}
+
       <p>{work.title}</p>
       <p>{work.day}</p>
       <p>{work.credit}</p>
