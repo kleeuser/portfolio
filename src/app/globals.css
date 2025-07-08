@@ -20,16 +20,8 @@ body {
   font-family: 'zen-kaku-gothic-new','Helvetica Neue','MS PGothic','Arial',sans-serif;
   font-weight: normal;
   letter-spacing: 1px;
-  cursor: url('/img/cursor.png'), auto;
 }
 
-/* hoverする要素（リンク、ボタンなど）のカーソル */
-a:hover,
-button:hover,
-.filter-image-button:hover,
-.card:hover {
-  cursor: url('/img/cursor1.png'), pointer;
-}
 
 .header {
   position: fixed;       /* ← 常に上に固定 */
@@ -90,7 +82,6 @@ main {
   background: none;
   border: none;
   padding: 0;
-  cursor: pointer;
 }
 
 .filter-image {

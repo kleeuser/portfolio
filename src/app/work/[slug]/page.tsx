@@ -3,16 +3,16 @@ import Image from 'next/image';
 import works from '../../../data/works.json';
 import { linkify } from '@/lib/linkify';
 
-// 静的ページとしてビルドするslugをNext.jsに伝える
 export function generateStaticParams() {
   return works.map((work) => ({ slug: work.slug }));
 }
 
-// 型を明示せず、直接paramsを使う（ビルドが通る）
-export default async function WorkDetail({ params }: any) {
-  const { slug } = params;
-  const work = works.find((w) => w.slug === slug);
-
+export default async function WorkDetail({
+  params,
+}: {
+  params: Record<string, string>;
+}) {
+  const work = works.find((w) => w.slug === params.slug);
   if (!work) return notFound();
 
   return (
