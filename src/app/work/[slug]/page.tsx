@@ -1,22 +1,10 @@
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import works from '../../../data/works.json';
 import { linkify } from '@/lib/linkify';
 
-type Work = {
-  slug: string;
-  title: string;
-  images: string[];
-  videos?: string[];
-  videolink?: string;
-  day?: string;
-  credit?: string;
-  description?: string;
-  linker?: string;
-};
-
-// ✅ 動的ルーティングパラメータを受け取る型
+// 動的ルーティングパラメータを受け取る型
 type PageProps = {
   params: {
     slug: string;
