@@ -55,7 +55,7 @@
     "title": "17-cover",
     "category": "music",
     "thumbnail": "/img/music/202506_17_birth/01.png",
-    "videolink": "",
+    "videolink": "https://www.youtube.com/embed/rwUMzkbQy_s",
     "images": [
       "/img/music/202506_17_birth/01.png",
       "/img/music/202506_17_birth/02.png",
@@ -76,14 +76,13 @@
     "title": "16-cover",
     "category": "music",
     "thumbnail": "/img/music/202506_16_koyo/01.png",
-    "videolink": "",
+    "videolink": "https://www.youtube.com/embed/Y5blHop2LD8",
     "images": [
       "/img/music/202506_16_koyo/01.png",
       "/img/music/202506_16_koyo/02.png",
       "/img/music/202506_16_koyo/03.png",
       "/img/music/202506_16_koyo/04.png",
-      "/img/music/202506_16_koyo/05.png",
-      "/img/music/202506_16_koyo/06.png"
+      "/img/music/202506_16_koyo/05.png"
     ],
     "day": "Jun 2025",
     "credit": "sing + guitar + edit. klee",

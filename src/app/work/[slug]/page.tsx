@@ -15,19 +15,19 @@ type Work = {
   linker?: string; 
 };
 
-type Props = {
+type Params = {
   params: { slug: string };
 };
 
-export default function WorkDetail({ params }: Props) {
-    const work: Work | undefined = works.find((w) => w.slug === params.slug);  
-    if (!work) return notFound();
+export default async function WorkDetail({ params }: Params) {
+  const work: Work | undefined = works.find((w) => w.slug === params.slug);
+  if (!work) return notFound();
 
   return (
     <main>
       <div className="detail-images">
         {work.videos?.map((src, i) => (
-        <video
+          <video
             key={i}
             autoPlay
             controls
@@ -37,22 +37,22 @@ export default function WorkDetail({ params }: Props) {
             className="detail-video"
             width={600}
             height={400}
-        >
+          >
             <source src={src} type="video/mp4" />
             Your browser does not support the video tag.
-        </video>
+          </video>
         ))}
         {work.videolink && (
-            <div className="embed-video">
+          <div className="embed-video">
             <iframe
-                src={work.videolink}
-                width={395}
-                height={702}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                title="embedded video"
+              src={work.videolink}
+              width={395}
+              height={702}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              title="embedded video"
             />
-            </div>
+          </div>
         )}
         {work.images.map((src, i) => (
           <Image
@@ -65,9 +65,7 @@ export default function WorkDetail({ params }: Props) {
         ))}
       </div>
       {work.linker && (
-        <h2
-            dangerouslySetInnerHTML={{ __html: linkify(work.linker) }}
-        />
+        <h2 dangerouslySetInnerHTML={{ __html: linkify(work.linker) }} />
       )}
       <p>{work.title}</p>
       <p>{work.day}</p>
