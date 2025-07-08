@@ -3,9 +3,18 @@ import Image from 'next/image';
 import works from '../../../data/works.json';
 import { linkify } from '@/lib/linkify';
 
-export default async function WorkDetail({ params }: { params: { slug: string } }) {
-  const work = works.find((w) => w.slug === params.slug);
+type Params = {
+  slug: string;
+};
 
+export async function generateStaticParams() {
+  return works.map((work) => ({
+    slug: work.slug,
+  }));
+}
+
+export default async function WorkDetail({ params }: { params: Params }) {
+  const work = works.find((w) => w.slug === params.slug);
   if (!work) return notFound();
 
   return (
