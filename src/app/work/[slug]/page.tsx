@@ -1,17 +1,9 @@
-// import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import works from '../../../data/works.json';
 import { linkify } from '@/lib/linkify';
 
-// 動的ルーティングパラメータを受け取る型
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function WorkDetail({ params }: PageProps) {
+export default async function WorkDetail({ params }: { params: { slug: string } }) {
   const work = works.find((w) => w.slug === params.slug);
 
   if (!work) return notFound();
